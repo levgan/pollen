@@ -69,6 +69,14 @@
                         </a>
                     </li>@endcan
                     
+                    @can('polltoken_access')
+                    <li>
+                        <a href="{{ route('admin.polltokens.index') }}">
+                            <i class="fa fa-table"></i>
+                            <span>@lang('global.polltokens.title')</span>
+                        </a>
+                    </li>@endcan
+                    
                     @can('question_access')
                     <li>
                         <a href="{{ route('admin.questions.index') }}">

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create5c31fe5bef15dPollQuestionTable extends Migration
+class Create5c32975ea2cf7PollQuestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class Create5c31fe5bef15dPollQuestionTable extends Migration
         if(! Schema::hasTable('poll_question')) {
             Schema::create('poll_question', function (Blueprint $table) {
                 $table->integer('poll_id')->unsigned()->nullable();
-                $table->foreign('poll_id', 'fk_p_249597_249596_questi_5c31fe5bef2ec')->references('id')->on('polls')->onDelete('cascade');
+                $table->foreign('poll_id', 'fk_p_249597_249596_questi_5c32975ea2e46')->references('id')->on('polls')->onDelete('cascade');
                 $table->integer('question_id')->unsigned()->nullable();
-                $table->foreign('question_id', 'fk_p_249596_249597_poll_q_5c31fe5bef3da')->references('id')->on('questions')->onDelete('cascade');
+                $table->foreign('question_id', 'fk_p_249596_249597_poll_q_5c32975ea2ed2')->references('id')->on('questions')->onDelete('cascade');
                 
             });
         }

@@ -13,8 +13,10 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call(PermissionSeed::class);
+        $this->call(PollSeed::class);
         $this->call(RoleSeed::class);
         $this->call(UserSeed::class);
+        $this->call(PolltokenSeed::class);
         $this->call(RoleSeedPivot::class);
         $this->call(UserSeedPivot::class);
 

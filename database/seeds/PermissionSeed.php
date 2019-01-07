@@ -56,6 +56,11 @@ class PermissionSeed extends Seeder
             ['id' => 41, 'title' => 'response_view',],
             ['id' => 42, 'title' => 'response_delete',],
             ['id' => 43, 'title' => 'vote_access',],
+            ['id' => 44, 'title' => 'polltoken_access',],
+            ['id' => 45, 'title' => 'polltoken_create',],
+            ['id' => 46, 'title' => 'polltoken_edit',],
+            ['id' => 47, 'title' => 'polltoken_view',],
+            ['id' => 48, 'title' => 'polltoken_delete',],
 
         ];
 

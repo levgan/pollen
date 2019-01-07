@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Create5c31fe5c00035OptionQuestiontypeTable extends Migration
+class Create5c32975ea4321OptionQuestiontypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class Create5c31fe5c00035OptionQuestiontypeTable extends Migration
         if(! Schema::hasTable('option_questiontype')) {
             Schema::create('option_questiontype', function (Blueprint $table) {
                 $table->integer('option_id')->unsigned()->nullable();
-                $table->foreign('option_id', 'fk_p_249594_249595_questi_5c31fe5c0013b')->references('id')->on('options')->onDelete('cascade');
+                $table->foreign('option_id', 'fk_p_249594_249595_questi_5c32975ea443e')->references('id')->on('options')->onDelete('cascade');
                 $table->integer('questiontype_id')->unsigned()->nullable();
-                $table->foreign('questiontype_id', 'fk_p_249595_249594_option_5c31fe5c001db')->references('id')->on('questiontypes')->onDelete('cascade');
+                $table->foreign('questiontype_id', 'fk_p_249595_249594_option_5c32975ea4510')->references('id')->on('questiontypes')->onDelete('cascade');
                 
             });
         }

@@ -29,6 +29,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('polls_mass_destroy', ['uses' => 'Admin\PollsController@massDestroy', 'as' => 'polls.mass_destroy']);
     Route::post('polls_restore/{id}', ['uses' => 'Admin\PollsController@restore', 'as' => 'polls.restore']);
     Route::delete('polls_perma_del/{id}', ['uses' => 'Admin\PollsController@perma_del', 'as' => 'polls.perma_del']);
+    Route::resource('polltokens', 'Admin\PolltokensController');
+    Route::post('polltokens_mass_destroy', ['uses' => 'Admin\PolltokensController@massDestroy', 'as' => 'polltokens.mass_destroy']);
+    Route::post('polltokens_restore/{id}', ['uses' => 'Admin\PolltokensController@restore', 'as' => 'polltokens.restore']);
+    Route::delete('polltokens_perma_del/{id}', ['uses' => 'Admin\PolltokensController@perma_del', 'as' => 'polltokens.perma_del']);
     Route::resource('questions', 'Admin\QuestionsController');
     Route::post('questions_mass_destroy', ['uses' => 'Admin\QuestionsController@massDestroy', 'as' => 'questions.mass_destroy']);
     Route::post('questions_restore/{id}', ['uses' => 'Admin\QuestionsController@restore', 'as' => 'questions.restore']);
