@@ -34,6 +34,7 @@
 <ul class="nav nav-tabs" role="tablist">
     
 <li role="presentation" class="active"><a href="#responses" aria-controls="responses" role="tab" data-toggle="tab">Responses</a></li>
+<li role="presentation" class=""><a href="#polltokens" aria-controls="polltokens" role="tab" data-toggle="tab">Poll tokens</a></li>
 </ul>
 
 <!-- Tab panes -->
@@ -96,6 +97,78 @@
                                         'method' => 'DELETE',
                                         'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
                                         'route' => ['admin.responses.destroy', $response->id])) !!}
+                                    {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                    {!! Form::close() !!}
+                                    @endcan
+                                </td>
+                                @endif
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="10">@lang('global.app_no_entries_in_table')</td>
+            </tr>
+        @endif
+    </tbody>
+</table>
+</div>
+<div role="tabpanel" class="tab-pane " id="polltokens">
+<table class="table table-bordered table-striped {{ count($polltokens) > 0 ? 'datatable' : '' }}">
+    <thead>
+        <tr>
+            <th>@lang('global.polltokens.fields.title')</th>
+                        <th>@lang('global.polltokens.fields.description')</th>
+                        <th>@lang('global.polltokens.fields.user')</th>
+                        <th>@lang('global.polltokens.fields.token')</th>
+                        <th>@lang('global.polltokens.fields.poll')</th>
+                        @if( request('show_deleted') == 1 )
+                        <th>&nbsp;</th>
+                        @else
+                        <th>&nbsp;</th>
+                        @endif
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (count($polltokens) > 0)
+            @foreach ($polltokens as $polltoken)
+                <tr data-entry-id="{{ $polltoken->id }}">
+                    <td field-key='title'>{{ $polltoken->title }}</td>
+                                <td field-key='description'>{{ $polltoken->description }}</td>
+                                <td field-key='user'>{{ $polltoken->user->name ?? '' }}</td>
+                                <td field-key='token'>{{ $polltoken->token }}</td>
+                                <td field-key='poll'>{{ $polltoken->poll->title ?? '' }}</td>
+                                @if( request('show_deleted') == 1 )
+                                <td>
+                                    {!! Form::open(array(
+                                        'style' => 'display: inline-block;',
+                                        'method' => 'POST',
+                                        'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
+                                        'route' => ['admin.polltokens.restore', $polltoken->id])) !!}
+                                    {!! Form::submit(trans('global.app_restore'), array('class' => 'btn btn-xs btn-success')) !!}
+                                    {!! Form::close() !!}
+                                                                    {!! Form::open(array(
+                                        'style' => 'display: inline-block;',
+                                        'method' => 'DELETE',
+                                        'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
+                                        'route' => ['admin.polltokens.perma_del', $polltoken->id])) !!}
+                                    {!! Form::submit(trans('global.app_permadel'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                    {!! Form::close() !!}
+                                                                </td>
+                                @else
+                                <td>
+                                    @can('polltoken_view')
+                                    <a href="{{ route('admin.polltokens.show',[$polltoken->id]) }}" class="btn btn-xs btn-primary">@lang('global.app_view')</a>
+                                    @endcan
+                                    @can('polltoken_edit')
+                                    <a href="{{ route('admin.polltokens.edit',[$polltoken->id]) }}" class="btn btn-xs btn-info">@lang('global.app_edit')</a>
+                                    @endcan
+                                    @can('polltoken_delete')
+{!! Form::open(array(
+                                        'style' => 'display: inline-block;',
+                                        'method' => 'DELETE',
+                                        'onsubmit' => "return confirm('".trans("global.app_are_you_sure")."');",
+                                        'route' => ['admin.polltokens.destroy', $polltoken->id])) !!}
                                     {!! Form::submit(trans('global.app_delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
                                     @endcan

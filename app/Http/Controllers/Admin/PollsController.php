@@ -130,11 +130,11 @@ class PollsController extends Controller
 $responses = \App\Response::where('poll_id', $id)->get();$questions = \App\Question::whereHas('poll',
                     function ($query) use ($id) {
                         $query->where('id', $id);
-                    })->get();
+                    })->get();$polltokens = \App\Polltoken::where('poll_id', $id)->get();
 
         $poll = Poll::findOrFail($id);
 
-        return view('admin.polls.show', compact('poll', 'responses', 'questions'));
+        return view('admin.polls.show', compact('poll', 'responses', 'questions', 'polltokens'));
     }
 
 

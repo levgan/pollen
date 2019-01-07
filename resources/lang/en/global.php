@@ -12,6 +12,7 @@ return [
 		'polls' => [		'title' => 'Polls',		'fields' => [			'title' => 'Title',			'description' => 'Description',			'question' => 'Questions',		],	],
 		'responses' => [		'title' => 'Responses',		'fields' => [			'user' => 'User',			'name' => 'Name',			'question' => 'Question',			'option' => 'Option',			'poll' => 'Poll',		],	],
 		'vote' => [		'title' => 'Vote',		'fields' => [		],	],
+		'polltokens' => [		'title' => 'Poll tokens',		'fields' => [			'title' => 'Title',			'description' => 'Description',			'user' => 'User',			'token' => 'Token',			'poll' => 'Poll',		],	],
 	'app_create' => 'Create',
 	'app_save' => 'Save',
 	'app_edit' => 'Edit',

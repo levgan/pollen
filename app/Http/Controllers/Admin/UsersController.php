@@ -120,11 +120,11 @@ class UsersController extends Controller
         }
         
         $roles = \App\Role::get()->pluck('title', 'id');
-$responses = \App\Response::where('user_id', $id)->get();
+$responses = \App\Response::where('user_id', $id)->get();$polltokens = \App\Polltoken::where('user_id', $id)->get();
 
         $user = User::findOrFail($id);
 
-        return view('admin.users.show', compact('user', 'responses'));
+        return view('admin.users.show', compact('user', 'responses', 'polltokens'));
     }
 
 

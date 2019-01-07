@@ -44,6 +44,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('responses_restore/{id}', ['uses' => 'Admin\ResponsesController@restore', 'as' => 'responses.restore']);
     Route::delete('responses_perma_del/{id}', ['uses' => 'Admin\ResponsesController@perma_del', 'as' => 'responses.perma_del']);
     Route::resource('votes', 'Admin\VotesController');
+    Route::resource('polltokens', 'Admin\PolltokensController');
+    Route::post('polltokens_mass_destroy', ['uses' => 'Admin\PolltokensController@massDestroy', 'as' => 'polltokens.mass_destroy']);
+    Route::post('polltokens_restore/{id}', ['uses' => 'Admin\PolltokensController@restore', 'as' => 'polltokens.restore']);
+    Route::delete('polltokens_perma_del/{id}', ['uses' => 'Admin\PolltokensController@perma_del', 'as' => 'polltokens.perma_del']);
 
 
 
